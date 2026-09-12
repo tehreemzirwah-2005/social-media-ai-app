@@ -113,7 +113,7 @@ with col2:
         else:
             with st.spinner("🤖 Writing content & designing banner..."):
                 try:
-                    llm = ChatGroq(groq_api_key=GROQ_API_KEY, model_name="llama-3.3-70b-versatile")
+                    llm = ChatGroq(groq_api_key=GROQ_API_KEY, model="gemma2-9b-it")
                     
                     system_prompt = (
                         f"You are a top-tier Social Media Manager specializing in {platform}.\n"
