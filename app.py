@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 from PIL import Image, ImageDraw, ImageFont
 import io
@@ -7,7 +8,7 @@ from langchain_core.prompts import ChatPromptTemplate
 # ==========================================
 # 1. API KEY CONFIGURATION
 # ==========================================
-GROQ_API_KEY = "import os
+
 
 # Secrets se API key automatically read hogi
 GROQ_API_KEY = st.secrets.get("GROQ_API_KEY", os.getenv("GROQ_API_KEY"))"  # <--- Apni 'gsk_...' key yahan paste karein
