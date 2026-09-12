@@ -107,12 +107,15 @@ with col2:
     if generate_btn:
         if not topic or not details:
             st.warning("⚠️ Please fill in both Topic and Key Details first.")
+        elif not GROQ_API_KEY:
+            st.error("🔑 API Key nahi mili! Streamlit Secrets mein 'GROQ_API_KEY' set karein.")
         else:
             with st.spinner("🤖 Writing content & designing banner..."):
                 try:
+                    # Model name exactly updated for Groq
                     llm = ChatGroq(
-                        groq_api_key=GROQ_API_KEY, 
-                        model_name="llama-3.3-70b-versatile"
+                        api_key=GROQ_API_KEY, 
+                        model="llama-3.3-70b-versatile"
                     )
                     
                     system_prompt = (
@@ -151,4 +154,6 @@ with col2:
                     st.download_button("📥 Download Banner Image", data=banner_bytes, file_name="social_banner.png", mime="image/png")
 
                 except Exception as e:
-                    st.error(f"Error generating content: {str(e)}")
+                    st.error(f"Error: {str(e)}")
+
+# ==========================================
