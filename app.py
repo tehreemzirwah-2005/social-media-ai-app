@@ -1,17 +1,14 @@
 import os
+import io
 import streamlit as st
 from PIL import Image, ImageDraw, ImageFont
-import io
 from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate
 
 # ==========================================
 # 1. API KEY CONFIGURATION
 # ==========================================
-
-
-# Secrets se API key automatically read hogi
-GROQ_API_KEY = st.secrets.get("GROQ_API_KEY", os.getenv("GROQ_API_KEY"))  # <--- Apni 'gsk_...' key yahan paste karein
+GROQ_API_KEY = st.secrets.get("GROQ_API_KEY", os.getenv("GROQ_API_KEY"))
 
 # ==========================================
 # 2. PAGE CONFIGURATION & STYLING
@@ -112,24 +109,13 @@ with col2:
             st.warning("⚠️ Please fill in both Topic and Key Details first.")
         else:
             with st.spinner("🤖 Writing content & designing banner..."):
-
-          try:
-            llm = ChatGroq(
-                groq_api_key=GROQ_API_KEY, 
-                model_name="llama-3.3-70b-versatile"
-            )
-            prompt = ChatPromptTemplate.from_messages([
-                ("system", f"You are a top-tier Social Media Manager specializing in {platform} content."),
-                ("user", f"Write a high-converting post in {language} with a {tone} tone about {product_topic}. Details: {key_details}")
-            ])
-            chain = prompt | llm
-            response = chain.invoke({})
-            st.markdown(response.content)
-
-        except Exception as e:
-            st.error(f"Error generating content: {e}")
-
-    system_prompt = (
+                try:
+                    llm = ChatGroq(
+                        groq_api_key=GROQ_API_KEY, 
+                        model_name="llama-3.3-70b-versatile"
+                    )
+                    
+                    system_prompt = (
                         f"You are a top-tier Social Media Manager specializing in {platform}.\n"
                         f"Write a high-converting post in {language} with a {tone} tone.\n\n"
                         "Format the output strictly as:\n"
