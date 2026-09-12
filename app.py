@@ -11,7 +11,7 @@ from langchain_core.prompts import ChatPromptTemplate
 
 
 # Secrets se API key automatically read hogi
-GROQ_API_KEY = st.secrets.get("GROQ_API_KEY", os.getenv("GROQ_API_KEY"))"  # <--- Apni 'gsk_...' key yahan paste karein
+GROQ_API_KEY = st.secrets.get("GROQ_API_KEY", os.getenv("GROQ_API_KEY"))  # <--- Apni 'gsk_...' key yahan paste karein
 
 # ==========================================
 # 2. PAGE CONFIGURATION & STYLING
