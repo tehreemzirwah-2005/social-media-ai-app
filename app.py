@@ -112,16 +112,16 @@ with col2:
             st.warning("⚠️ Please fill in both Topic and Key Details first.")
         else:
             with st.spinner("🤖 Writing content & designing banner..."):
+                
                 try:
-                    
-llm = ChatGroq(
-    groq_api_key=GROQ_API_KEY,
-    model="llama-3.3-70b-versatile"
-)
+    llm = ChatGroq(
+        groq_api_key=GROQ_API_KEY,
+        model="llama-3.3-70b-versatile"
+    )
+except Exception as e:
+    st.error(f"Error generating content: {e}")
 
-
-                    
-                    system_prompt = (
+    system_prompt = (
                         f"You are a top-tier Social Media Manager specializing in {platform}.\n"
                         f"Write a high-converting post in {language} with a {tone} tone.\n\n"
                         "Format the output strictly as:\n"
