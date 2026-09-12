@@ -150,7 +150,7 @@ with col2:
                     banner_bytes = create_banner(topic, details[:60] + "...", bg_hex, text_hex)
                     
                     st.markdown("### 🖼️ Auto-Generated Visual Banner")
-                    st.image(banner_bytes, use_column_width=True)
+                    st.image(banner_bytes, use_container_width=True)
                     st.download_button("📥 Download Banner Image", data=banner_bytes, file_name="social_banner.png", mime="image/png")
 
                 except Exception as e:
