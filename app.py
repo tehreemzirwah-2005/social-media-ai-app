@@ -115,7 +115,7 @@ with col2:
                     # Model name exactly updated for Groq
                     llm = ChatGroq(
                         api_key=GROQ_API_KEY, 
-                        model="llama-3.1-8b-instant"
+                        model="openai/gpt-oss-120b"
                     )
                     
                     system_prompt = (
